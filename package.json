@@ -1,0 +1,38 @@
+{
+  "name": "example-node-express",
+  "version": "1.0.0",
+  "description": "A basic REST API on NodeJS and PostgreSQL that serves movies",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "nodemon",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bholtland/example-node-express.git"
+  },
+  "author": "Berend Holtland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bholtland/example-node-express/issues"
+  },
+  "homepage": "https://github.com/Bholtland/example-node-express#readme",
+  "dependencies": {
+    "@types/uuid": "^8.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.13",
+    "@types/pg": "^7.14.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
