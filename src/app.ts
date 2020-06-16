@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import dotenv from 'dotenv';
 import expressLoader from './loaders/express';
+import database from './loaders/database';
 
 export async function startServer() {
     try {
