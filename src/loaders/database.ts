@@ -1,6 +1,9 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 
+// Models
+import {movieModelInit, MovieModel} from '../models/MovieModel';
+
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.SQLDATABASE, process.env.SQLUSERNAME, process.env.SQLPASSWORD, {
@@ -15,7 +18,15 @@ const sequelize = new Sequelize(process.env.SQLDATABASE, process.env.SQLUSERNAME
     }
 });
 
+movieModelInit(sequelize);
+
+const db = {
+    sequelize,
+    Sequelize,
+    Movie: MovieModel
+}
+
 sequelize.authenticate();
 sequelize.sync();
 
-export default sequelize;
+export default db;

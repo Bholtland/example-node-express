@@ -1,24 +1,34 @@
 import sequelize from "../loaders/database";
-import { Model, Sequelize, STRING, NUMBER } from 'sequelize';
+import { Model, Sequelize, STRING, INTEGER } from 'sequelize';
 
-class MovieModel extends Model {}
+export class MovieModel extends Model {
+    public id: number;
+    public name: string;
+    public duration: number;
+}
 
-MovieModel.init(
-    {
-        name: {
-            type: STRING,
-            allowNull: false
-        },
-        duration: {
-            type: NUMBER,
-            allowNull: false
+export function movieModelInit(sequelize: Sequelize): void {
+    MovieModel.init(
+        {
+            id: {
+                type: INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            name: {
+                type: STRING,
+                allowNull: false
+            },
+            duration: {
+                type: INTEGER,
+                allowNull: false
+            }
+        }, 
+        {
+            sequelize,
+            modelName: 'movie'
         }
-    }, 
-    {
-        sequelize,
-        modelName: 'movie',
-        freezeTableName: true,
-    }
-);
+    );
+}
 
 export default MovieModel;
