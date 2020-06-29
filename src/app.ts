@@ -2,7 +2,6 @@ import express from 'express';
 import http from 'http';
 import dotenv from 'dotenv';
 import expressLoader from './loaders/express';
-import database from './loaders/database';
 
 export async function startServer() {
     try {
@@ -10,8 +9,10 @@ export async function startServer() {
         const app = await (express)();
         const server = http.createServer(app);
 
+        // Load everything related to express in separate module.
         expressLoader({ app });
 
+        // Start the server.
         server.listen(process.env.PORT, () => {
             console.log(`Server running on port ${process.env.PORT}`);
         });

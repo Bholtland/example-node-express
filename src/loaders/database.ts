@@ -5,8 +5,10 @@ import dotenv from 'dotenv';
 import {movieModelInit, MovieModel} from '../models/MovieModel';
 import {CategoryModel, categoryModelInit} from '../models/CategoryModel';
 
+// Set environment variables.
 dotenv.config();
 
+// Instantiate sequelize ORM.
 const sequelize = new Sequelize(process.env.SQLDATABASE, process.env.SQLUSERNAME, process.env.SQLPASSWORD, {
     host: process.env.SQLHOST,
     port: parseInt(process.env.SQLPORT),
@@ -19,18 +21,20 @@ const sequelize = new Sequelize(process.env.SQLDATABASE, process.env.SQLUSERNAME
     }
 });
 
+// Instantiate all DB models.
 movieModelInit(sequelize);
 categoryModelInit(sequelize);
 
+// Set relations of DB models.
 CategoryModel.hasMany(MovieModel, {foreignKey: {allowNull: false}});
 
+// Create DB object with sequelize and models.
 const db = {
     sequelize,
     Sequelize,
     Movie: MovieModel,
     Category: CategoryModel
 }
-
 
 sequelize.authenticate();
 sequelize.sync();

@@ -16,6 +16,7 @@
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
         "sourceMap": true,
+        "removeComments": true,
         "pretty": true,
         "outDir": "./build",
         "rootDir": "./src",

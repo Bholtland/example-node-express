@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Domain whitelist
 exports.default = [
     'http://localhost:8080',
     'http://dev.loyalbutler.com',

@@ -11,22 +11,18 @@ const config_1 = __importDefault(require("../config"));
 const express_session_1 = __importDefault(require("express-session"));
 const corsOptions_1 = __importDefault(require("../config/corsOptions"));
 const sessionSettings_1 = __importDefault(require("../config/sessionSettings"));
+const helmet_1 = __importDefault(require("helmet"));
 exports.default = async ({ app }) => {
     app.get('/status', (req, res) => { res.status(200).end(); });
     app.head('/status', (req, res) => { res.status(200).end(); });
     app.enable('trust proxy');
+    app.use(helmet_1.default());
     app.use(cors_1.default(corsOptions_1.default));
     app.use(body_parser_1.default.json());
     app.use(express_session_1.default(sessionSettings_1.default));
     app.use(config_1.default.api.prefix, controllers_1.default());
     app.use(express_1.default());
     app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
-    //   / catch 404 and forward to error handler
-    // app.use((req, res, next) => {
-    //     const err = new Error('Not Found');
-    //     err['status'] = 404;
-    //     next(err);
-    // });
     return app;
 };
 //# sourceMappingURL=express.js.map

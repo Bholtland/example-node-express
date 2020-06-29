@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
-// Models
 const MovieModel_1 = require("../models/MovieModel");
 const CategoryModel_1 = require("../models/CategoryModel");
 dotenv_1.default.config();
