@@ -1,4 +1,3 @@
-import MovieModel from "../models/MovieModel";
 import Movie from "../data-objects/IMovie";
 export default interface IMovieService {
     save(movie: Movie): Promise<Movie>;

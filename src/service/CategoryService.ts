@@ -2,7 +2,6 @@ import Category from "../data-objects/ICategory";
 import ICategoryService from "./ICategoryService";
 import { CategoryModel } from "../models/CategoryModel";
 import db from "../loaders/database";
-import Movie from "../data-objects/Movie";
 
 export default class CategoryService implements ICategoryService {
 
@@ -49,7 +48,7 @@ export default class CategoryService implements ICategoryService {
 
     public async findMoviesByCategoryId(id: number): Promise<Category> {
         try {
-            return await db.Category.findByPk(id, {include: db.Movie});
+            return await db.Category.findByPk(id, {include: [db.Movie]});
         } catch (error) {
             return null;
         }

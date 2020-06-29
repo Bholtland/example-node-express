@@ -10,10 +10,25 @@ const route = express_1.Router();
 exports.default = (app) => {
     const movieService = new MovieService_1.default();
     app.use('/movie', route);
+    route.get('/', async (req, res) => {
+        const result = await movieService.findAll();
+        res.json(result);
+        res.end();
+    });
+    route.get('/:id', async (req, res) => {
+        const result = await movieService.findById(parseInt(req.params.id));
+        res.json(result);
+        res.end();
+    });
     route.post('/', async (req, res) => {
-        const movieObject = new Movie_1.default(req.body.name, req.body.duration);
-        const result = await movieService.save(movieObject);
-        res.send(result);
+        const movieData = new Movie_1.default(req.body.name, req.body.duration);
+        const result = await movieService.save(movieData);
+        res.json(result);
+        res.end();
+    });
+    route.delete('/:id', async (req, res) => {
+        const result = await movieService.delete(parseInt(req.params.id));
+        res.json(result);
         res.end();
     });
 };

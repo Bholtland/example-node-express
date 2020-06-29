@@ -22,7 +22,8 @@
         "module": "commonjs",
         "allowJs": true,
         "noEmit": false,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "skipLibCheck": true
     },
     "include": [
         "./src/**/*"
