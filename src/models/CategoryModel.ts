@@ -1,14 +1,15 @@
 import sequelize from "../loaders/database";
 import { Model, Sequelize, STRING, INTEGER } from 'sequelize';
+import { MovieModel } from "./MovieModel";
 
-export class MovieModel extends Model {
+export class CategoryModel extends Model {
     public id: number;
     public name: string;
-    public duration: number;
 }
 
-export function movieModelInit(sequelize: Sequelize): void {
-    MovieModel.init(
+export function categoryModelInit(sequelize: Sequelize): void {
+
+    CategoryModel.init(
         {
             id: {
                 type: INTEGER,
@@ -18,15 +19,11 @@ export function movieModelInit(sequelize: Sequelize): void {
             name: {
                 type: STRING,
                 allowNull: false
-            },
-            duration: {
-                type: INTEGER,
-                allowNull: false
             }
         }, 
         {
             sequelize,
-            modelName: 'movie'
+            modelName: 'category'
         }
     );
 }

@@ -1,8 +1,6 @@
 import { Router, Request, Response } from 'express';
 import MovieService from '../../service/MovieService';
 import Movie from '../../data-objects/Movie';
-import db from '../../loaders/database';
-import { resolveNaptr } from 'dns';
 const route = Router();
 
 export default (app: Router) => {

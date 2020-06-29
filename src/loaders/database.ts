@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 // Models
 import {movieModelInit, MovieModel} from '../models/MovieModel';
+import {CategoryModel, categoryModelInit} from '../models/CategoryModel';
 
 dotenv.config();
 
@@ -19,12 +20,17 @@ const sequelize = new Sequelize(process.env.SQLDATABASE, process.env.SQLUSERNAME
 });
 
 movieModelInit(sequelize);
+categoryModelInit(sequelize);
+
+CategoryModel.hasMany(MovieModel, {foreignKey: {allowNull: false}});
 
 const db = {
     sequelize,
     Sequelize,
-    Movie: MovieModel
+    Movie: MovieModel,
+    Category: CategoryModel
 }
+
 
 sequelize.authenticate();
 sequelize.sync();
